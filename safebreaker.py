@@ -11,8 +11,11 @@ def main():
 
   raw_input_str = input('> ')
   print(raw_input_str)
-
-  input_int = int(raw_input_str)
+  
+  #we need to check that its only numbers,
+  #4 digits in length
+  #no repeating digits
+  input_int = int(raw_input_str, base=10)
 
   print(check_input(input_int))
 
