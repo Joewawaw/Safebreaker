@@ -19,12 +19,12 @@ def main():
         else:
             break
 
-    code_solution = gen_n_digit_code(4)
+    code_solution = gen_4_digit_code()
     #print(f'{code_solution=}')
 
     while num_tries > 0:
         while True:
-            print('Guess a sequence')
+            print('Guess the code')
             code_guess = input('> ')
             if check_input(code_guess) is True:
                 break
@@ -32,21 +32,25 @@ def main():
                 print('Incorrect input! try again')
         num_tries -=1
 
+        #find the number of Vs and the number of Xs
         num_v, num_x = check_code(code_guess, code_solution)
         #print (f'V={num_v}\tX={num_x}\tTries left: {num_tries}')
 
+        #build the print out
         print('  ',end='')
         for i in range(num_v):
             print('V',end='')
         for i in range(num_x):
             print('X',end='')
-        print(f'\tTries left: {num_tries}')
+        print(f'\t\tTries left: {num_tries}')
 
+        # if the code was solved
         if num_v == 4:
             print(f'Safe Opened! The code was {code_solution}\n')
             return
-        if num_tries == 0:
-            print(f'Game Over! Answer: {code_solution}\n')
+
+    # if we are out of tries
+    print(f'Game Over! Answer: {code_solution}\n')
 
 def check_code(guess, solution):
     num_v = 0
@@ -70,9 +74,8 @@ def check_input(s):
         return False
     return True
 
-def gen_n_digit_code(n):
-    digits = '0123456789'
-    return ''.join(random.sample(digits, 4))
+def gen_4_digit_code():
+    return ''.join(random.sample('0123456789', 4))
 
 if __name__ == '__main__':
     main()
