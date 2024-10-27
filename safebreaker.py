@@ -66,10 +66,10 @@ def check_input(s):
     #this checks if the code has repeating digits
     if len(s) != len(set(s)):
         return False
-    #this check is the string is exactly 4 characters
+    #this checks if the string is exactly 4 characters
     if len(s) != 4:
         return False
-    #this check if there are only digits in the string
+    #this checks if there are only digits in the string
     if not all(char in '0123456789' for char in s):
         return False
     return True
